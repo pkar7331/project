@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:insert="page-layout-template :: header('Projekt L06 - rejestracja', 'Rejestracja administratora')"></th:block>
+
+<section id="content">
+    <div class="container">
+        <section>
+            <div class="container">
+                <div class="container_smaller">
+                    <p>Rejestracja</p>
+                    <form action="#" th:action="@{/sign-up}" th:object="${adminDTO}" method="post">
+                        <input type="text" th:field="*{email}" placeholder="Podaj e-mail"/>
+                        <p class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                        <br>
+                        <input type="password" th:field="*{password}" placeholder="Podaj haslo" />
+                        <p class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                        <input type="password" th:field="*{repeatPassword}" placeholder="Podaj haslo" />
+                        <ul th:if="${#fields.hasErrors('*')}">
+                            <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+                        </ul>
+                        <br>
+                        <input type="submit" value="Wyślij">
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+
+
+</body>
+</html>

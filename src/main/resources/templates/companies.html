@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:insert="page-layout-template :: header('Projekt L06 - Zarządzaj firmami', 'Zarządzanie firmami')"></th:block>
+
+<section id="content">
+    <div class="container">
+        <table style="border: 1px solid white; margin: 0 auto;">
+            <thead>
+                <th style="border: 1px solid white;">Nazwa</th>
+                <th style="border: 1px solid white;">Miasto</th>
+                <th style="border: 1px solid white;">Opis</th>
+                <th style="border: 1px solid white;">Numer budynku</th>
+                <th style="border: 1px solid white;">Numer telefonu</th>
+                <th style="border: 1px solid white;">Kod pocztowy</th>
+                <th style="border: 1px solid white;">Ulica</th>
+            </thead>
+            <tbody>
+        <tr th:each="company: ${companies}">
+                <td  th:text="${company.name}"></td>
+
+                <td th:text="${company.city}"></td>
+                <td th:text="${company.description}"></td>
+                <td th:text="${company.flatNumber}"></td>
+                <td th:text="${company.phone}"></td>
+                <td th:text="${company.postCode}"></td>
+                <td th:text="${company.street}"></td>
+                <td><a style="color: red;" th:href="@{'/admin/companies/' + ${company.idCompany} + '/delete'}">Usuń</a></td>
+                <td><a th:href="@{'/admin/companies/' + ${company.idCompany} + '/edit'}">Edytuj</a></td>
+            </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/admin/companies/new}" class="center">Dodaj</a>
+    </div>
+</section>
+
+</body>
+</html>

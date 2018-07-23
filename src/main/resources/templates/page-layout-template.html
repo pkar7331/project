@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<th:block th:fragment="header(page_title,showcase_title)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#004bb9">
+    <title th:text="${page_title}"></title>
+
+    <script src="/JS/jquery-3.3.1.min.js"></script>
+    <script src="/JS/main.js"></script>
+
+    <!--KALENDARZ-->
+    <link href='/calendar/fullcalendar.min.css' rel='stylesheet' />
+    <link href='/calendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+    <script src='/calendar/lib/moment.min.js'></script>
+    <script src='/calendar/lib/jquery.min.js'></script>
+    <script src='/calendar/fullcalendar.min.js'></script>
+    <script src='/calendar/locale/pl.js'></script>
+    <!--KONIEC KALENDARZA-->
+    
+    <link rel="stylesheet" type="text/css" href="/style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    
+    <style>
+    .center {
+        text-align: center;
+        display: block;
+    }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div id="branding">
+            <a th:href="@{/index}"><h1>Projekt grupy <span>L06</span></h1></a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a th:href="@{/index}">Strona główna</a></li>
+                <li sec:authorize="hasRole('USER')"><a th:href="@{/user}">Panel użytkownika</a></li>
+                <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/admin}">Panel administratora</a></li>
+                <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Zaloguj się</a></li>
+                <li sec:authorize="!isAuthenticated()"><a th:href="@{/sign-up}">Zarejestruj się</a></li>
+				<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Wyloguj się</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section id="showcase">
+    <div class="container">
+        <h1 th:text="${showcase_title}"></h1>
+    </div>
+</section>
+</body>
+</th:block>
+</html>

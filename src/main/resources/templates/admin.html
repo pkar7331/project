@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<th:block th:insert="page-layout-template :: header('Projekt L06 - Administrator', 'Panel Administratora')"></th:block>
+
+<section id="content">
+    <div class="container">
+        <p class="center">OPCJE</p>
+    </div>
+</section>
+
+<section id="navigation">
+    <div class="container">
+        <a th:href="@{/admin/account}" class="center">Zarządzaj kontem</a>
+        <a th:href="@{/admin/users}" class="center">Zarządzaj Użytkownikami</a>
+        <a th:href="@{/admin/companies}" class="center">Zarządzaj danymi firm</a>
+        <a th:href="@{/admin/error-logs}" class="center">Przeglądaj logi błędów</a>
+    </div>
+</section>
+
+
+    <div class="container">
+
+    </div>
+
+</body>
+</html>

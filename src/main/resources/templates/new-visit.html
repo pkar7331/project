@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<th:block th:insert="page-layout-template :: header('Projekt L06 - Dodawanie wizyty', 'Dodawanie wizyty')"></th:block>
+
+
+<section id="content">
+    <div class="container">
+        <div class="container_smaller">
+            <p>Dodawanie wizyty</p>
+            <form action="#" th:action="@{/user/visits/new}" th:object="${visitDTO}" method="post">
+                <div>
+                    <label for="title">Tytuł</label>
+                    <input type="text" id="title" placeholder="Tytuł" th:field="*{title}">
+                    <p class="text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+                </div>
+                <div>
+                    <label for="description">Opis</label>
+                    <input type="text" id="description"  placeholder="Opis" th:field="*{description}">
+                    <p class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+                </div>
+                <div>
+                    <label for="end">Data startu</label>
+                    <input type="datetime-local" id="end"  placeholder="Data początku" th:field="*{start}">
+                    <p class="text-danger" th:if="${#fields.hasErrors('start')}" th:errors="*{start}"></p>
+                </div>
+                <div>
+                    <label for="start">Data końca</label>
+                    <input type="datetime-local" id="start"  placeholder="Data końca" th:field="*{end}">
+                    <p class="text-danger" th:if="${#fields.hasErrors('end')}" th:errors="*{end}"></p>
+                </div>
+
+                <div>
+                    <label for="customer">Klient</label>
+                    <select id="customer" th:field="*{idCustomer}">
+                        <!--<option value="" selected disabled hidden>Select customer</option>-->
+                        <option th:each="customer: ${customers}" th:value="${customer.idCustomer}"
+                                th:text="${customer.firstName} + ' ' + ${customer.lastName}"></option>
+                    </select>
+                </div>
+                <div>
+                    <label for="employee">Przeprowadzajacy wizytę</label>
+                    <select id="employee" th:field="*{idEmployee}">
+                        <!--<option value="" selected disabled hidden>Select employee</option>-->
+                        <option th:each="employee: ${employees}" th:value="${employee.idEmployee}"
+                                th:text="${employee.firstName} + ' ' + ${employee.lastName}"></option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Wyślij</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

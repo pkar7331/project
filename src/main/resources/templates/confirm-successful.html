@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      
+<th:block th:if="${confirmSuccessful} == 'yes' and ${confirmValue} == 'yes'">    
+<th:block th:insert="page-layout-template :: header('Projekt L06 - Potwierdzenie wizyty udane', 'Potwierdzenie wizyty udane')"></th:block>
+</th:block>
+<th:block th:if="${confirmSuccessful} == 'yes' and ${confirmValue} == 'no'">
+<th:block th:insert="page-layout-template :: header('Projekt L06 - Odwołanie wizyty udane', 'Odwołanie wizyty udane')"></th:block>
+</th:block>
+<th:block th:if="${confirmSuccessful} == 'no'">
+<th:block th:insert="page-layout-template :: header('Projekt L06 - Błąd podczas potwierdzenia wizyty', 'Błąd podczas potwierdzenia wizyty')"></th:block>
+</th:block>
+
+</body>
+</html>

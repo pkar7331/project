@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      
+<th:block th:insert="page-layout-template :: header('Projekt L06 - Zarządzaj dodatkowymi atrybutami klientów', 'Zarządzanie dodatkowymi atrybutami klientów')"></th:block>
+
+<section id="content">
+    <div class="container">
+        <table style="border: 1px solid white; margin: 0 auto;">
+            <thead>
+                <th style="border: 1px solid white;">Nazwa</th>
+                <th style="border: 1px solid white;">Wyrażenie reg.</th>
+                <th style="border: 1px solid white;">Obligatoryjny</th>
+            </thead>
+            <tbody>
+                <tr th:each="attributePattern: ${attributePatterns}">
+                    <td th:text="${attributePattern.name}"></td>
+                    <td th:text="${attributePattern.regex}"></td>
+                    <td th:text="${attributePattern.obligatory}"></td>
+                    <td><a style="color: red;" th:href="@{'attribute-patterns/' + ${attributePattern.idAttributePattern} + '/delete'}">Usuń</a></td>
+                    <td><a th:href="@{'attribute-patterns/' + ${attributePattern.idAttributePattern} + '/edit'}">Edytuj</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{attribute-patterns/new}" class="center">Dodaj</a>
+    </div>
+</section>
+</body>
+</html>

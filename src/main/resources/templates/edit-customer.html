@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      
+<th:block th:insert="page-layout-template :: header('Projekt L06 - Edycja klienta', 'Edycja klienta')"></th:block>
+
+<section id="content">
+        <div class="container">
+            <div class="container_smaller">
+                <p>Edycja klienta</p>
+                <form th:action="@{/user/customers/new}" th:object="${customerDTO}" method="post">
+                    <input type="hidden" th:field="*{customerId}" />
+                    <input type="text" th:field="*{firstName}" placeholder="Imię"/>
+                    <p class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+                     <br>
+                    <input type="text" th:field="*{lastName}" placeholder="Nazwisko" />
+                    <p class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+                     <br>
+                    <input type="text" th:field="*{email}" placeholder="E-mail" />
+                    <p class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                    <br>
+                      <input type="text" th:field="*{phone}" placeholder="Numer telefonu" />
+                    <p class="text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+                     <br>
+                      <input type="text" th:field="*{comment}" placeholder="Komentarz" />
+                    <p class="text-danger" th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></p>
+                     <br>
+                    <input type="submit" value="Wyślij">
+                    <br>
+                </form>
+            </div>
+        </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      
+<th:block th:insert="page-layout-template :: header('Projekt L06 - Logowanie', 'Logowanie')"></th:block>
+
+
+<section id="navigation">
+    <div class ="container">
+        <div class="center" th:if="${param.error}">
+            <p style="color: red">Login lub hasło są niepoprawne!</p>
+        </div>
+        </div>
+        <div class="center" th:if="${param.logout}">
+            <h1 style="color: blue">Wylogowałeś się!</h1>
+        </div>
+        <form class="center" th:action="@{/login}" method="post">
+           <label for="username">Podaj e-mail</label>
+           <input id="username" type="text" placeholder ="e-mail" name="username"/>
+            </br>
+           <label for="password">Podaj hasło</label>
+           <input id="password" type="password" placeholder ="hasło" name="password"/>
+            </br>
+           <input type="submit" value="Zaloguj"/>
+        </form>
+    </div>
+</section>
+</body>
+</html>

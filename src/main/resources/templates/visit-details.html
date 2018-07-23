@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      
+<th:block th:insert="page-layout-template :: header('Projekt L06 - Szczegóły wizyty', 'Szczegóły wizyty')"></th:block>
+
+<section id="content">
+    <div class="container" th:object="${visitDTO}">
+        <p class="center" style="margin: 20px auto;" th:text="'Tytul: ' + *{title}"></p>
+        <p class="center" style="margin: 20px auto;" th:text="'Opis: ' + *{description}"></p>
+        <p class="center" style="margin: 20px auto;" th:text="'Data rozpoczecia: ' + *{start}"></p>
+        <p class="center" style="margin: 20px auto;" th:text="'Data zakończenia: ' + *{end}"></p>
+        <p class="center" style="margin: 20px auto;" th:text="'Potwierdzona: ' + *{verification}"></p>
+        <p class="center" style="margin: 20px auto;" th:text="'Odbyta: ' + *{completed}"></p>
+        <p class="center" style="margin: 20px auto;" th:text="'Anulowana: ' + *{canceled}"></p>
+    </div>
+    <div class="container" th:object="${employeeDTO}">
+        <p class="center" style="margin: 20px auto;" th:text="'Imie przeporwadzajacego: ' + *{firstName}"></p>
+        <p class="center" style="margin: 20px auto;" th:text="'Nazwisko przeprowadzajacego: ' + *{lastName}"></p>
+    </div>
+    <div class="container" th:object="${customerDTO}">
+        <p class="center" style="margin: 20px auto;" th:text="'Imie klienta: ' + *{firstName}"></p>
+        <p class="center" style="margin: 20px auto;" th:text="'Nazwisko klienta: ' + *{lastName}"></p>
+        <p class="center" style="margin: 20px auto;" th:text="'Komentarz: ' + *{comment}"></p>
+    </div>
+</section>
+</body>
+</html>

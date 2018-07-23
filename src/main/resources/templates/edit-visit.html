@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      
+<th:block th:insert="page-layout-template :: header('Projekt L06 - Edytuj wizytę', 'Edytuj wizytę')"></th:block>
+
+<section id="content">
+        <div class="container">
+            <div class="container_smaller">
+                <p>Edytuj wizytę</p>
+                <form th:action="@{/user/visits/new}" th:object="${visitDTO}" method="post">
+                    <input type="hidden" th:field="*{idVisit}" />
+                    <label for="title">Nazwa</label>
+                    <input id="title" type="text" th:field="*{title}"/>
+                    <p class="text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+                     <br>
+                    <label for="description">Opis</label>
+                    <input id="description" type="text" th:field="*{description}"/>
+                    <p class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+                     <br>
+                    <label for="start">Początek</label>
+                    <input id="start" type="datetime-local" th:field="*{start}">
+                    <p class="text-danger" th:if="${#fields.hasErrors('start')}" th:errors="*{start}"></p>
+                     <br>
+                    <label for="end">Koniec</label>
+                    <input id="end" type="datetime-local" th:field="*{end}">
+                    <p class="text-danger" th:if="${#fields.hasErrors('end')}" th:errors="*{end}"></p>
+                     <br>
+                    <label for="customer">Klient</label>
+                    <select id="customer" th:field="*{idCustomer}">
+                        <option th:each="customer: ${customers}" th:value="${customer.idCustomer}"
+                                th:text="${customer.firstName} + ' ' + ${customer.lastName}"></option>
+                    </select>
+                     <br>
+                    <label for="employee">Nazwa</label>
+                    <select id="employee" th:field="*{idEmployee}">
+                        <option th:each="employee: ${employees}" th:value="${employee.idEmployee}"
+                                th:text="${employee.firstName} + ' ' + ${employee.lastName}"></option>
+                    </select>
+                     <br>
+                    <label for="verification">Potwierdzona</label>
+                    <input id="verification" type="checkbox" th:field="*{verification}"/>
+                    <p class="text-danger" th:if="${#fields.hasErrors('verification')}" th:errors="*{verification}"></p>
+                     <br>
+                    <label for="completed">Zakończona</label>
+                    <input id="completed" type="checkbox" th:field="*{completed}">
+                    <p class="text-danger" th:if="${#fields.hasErrors('completed')}" th:errors="*{completed}"></p>
+                     <br>
+                    <label for="canceled">Anulowana</label>
+                    <input id="canceled" type="checkbox" th:field="*{canceled}"/>
+                    <p class="text-danger" th:if="${#fields.hasErrors('canceled')}" th:errors="*{canceled}"></p>
+                     <br>
+                    <br>
+                    <input type="submit" value="Wyślij">
+                    <br>
+                </form>
+            </div>
+        </div>
+        <div class="container">
+        <a th:href="@{delete}" class="center">Usuń</p>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
