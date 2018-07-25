@@ -36,7 +36,7 @@ INSERT INTO customer(id_customer, first_name, last_name, email, phone, comment, 
   (16,"Karol", "Sikorski", "ksik@mail.com", "696764244", "komentarz 16",1),
   (17,"Aleksandra", "Krawczyk", "akra@mail.com", "875856374", "komentarz 17",3),
   (18,"Kacper", "Jasinski", "kjas@mail.com", "285675755", "komentarz 18",2),
-  (19,"Hanna", "Kowalik", "hkow@mail.com", "967834633", "komentarz 19",1),
+  (19,"Hanna", "Kowalik", "hkow@mail.com", "967834633", "komentarz 19zzzz",1),
   (20,"Oskar", "Sokolowski", "osok@mail.com", "758674643", "komentarz 20",3),
   (21,"Patryk", "Kluk", "systemzarzadzaniawizytami@gmail.com", "123456789", "komentarz 21", 1)
 ;
